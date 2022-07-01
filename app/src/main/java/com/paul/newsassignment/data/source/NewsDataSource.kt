@@ -1,4 +1,11 @@
 package com.paul.newsassignment.data.source
 
-class NewsDataSource {
+import com.paul.newsassignment.data.MyResult
+import com.paul.newsassignment.data.NewsData
+
+interface NewsDataSource {
+
+
+
+    suspend fun getNews(): MyResult<NewsData>
 }
