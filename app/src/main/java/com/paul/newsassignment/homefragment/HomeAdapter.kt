@@ -64,22 +64,13 @@ class HomeAdapter :
             binding.newsMainTitle.text = item.appearance?.mainTitle
             binding.newSubTitle.text = item.appearance?.subTitle
             binding.newsSubscript.text = item.appearance?.subscript
-//            binding.newsTime.text = item.extra?.created?.let { convertLongToTime(it.toLong()) }
-            binding.newsTime.text = item.extra?.created?.let {
+            if(item.extra?.created!=null) binding.newsTime.text = item.extra.created.let {
                 LocalDateTime.ofEpochSecond(it.toLong(),
                     0,
                     ZoneOffset.UTC)
             }.toString()
 
         }
-
-        private fun convertLongToTime(time: Long): String {
-            val date = Date(time)
-            val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
-            return format.format(date)
-        }
-
-
     }
 
     class TitleHolder(private var binding: ItemTitleBinding) :
